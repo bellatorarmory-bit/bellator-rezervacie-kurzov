@@ -1,5 +1,5 @@
 /**
- * STRELECKÝ KLUB BELLATOR - Rezervačný systém (MODERNÁ VERZIA)
+ * STRELECKÝ KLUB BELLATOR - Rezervačný systém (KOMPLETNÁ VERZIA)
  */
 
 let kapacity = {
@@ -7,13 +7,27 @@ let kapacity = {
     "12.3.2026": 10
 };
 
+// --- 1. FUNKCIA PRE MOBILNÉ MENU (HAMBURGER) ---
+function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('active');
+}
+
+// Zatvorenie menu po kliknutí na odkaz
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+    });
+});
+
+// --- 2. HLAVNÁ FUNKCIA OTVORENIA DETAILU ---
 function otvoritDetail(typKurzu) {
     const modal = document.getElementById('courseModal');
     const textPanel = document.querySelector('.modal-text');
     const infoPanel = document.querySelector('.modal-info-panel');
 
     if (typKurzu === 'domov') {
-        // 1. NAPLNÍME ĽAVÚ STRANU (TEXT + PODROBNOSTI)
+        // --- TVOJ DETAILNÝ KÓD PRE OCHRANU OBYDLIA ---
         textPanel.innerHTML = `
             <h2 id="modalTitle">Ochrana obydlia (Home Defence)</h2>
             <img src="img/HS-home.webp" class="modal-img-small" alt="Ochrana obydlia">
@@ -55,15 +69,8 @@ function otvoritDetail(typKurzu) {
             <div class="obsah-sekcia"><span><i class="fas fa-check" style="color:var(--army-olive)"></i> Účasť možná <strong>aj bez zbrojného preukazu</strong>.</span></div>
             <div class="obsah-sekcia"><span><i class="fas fa-gun"></i> Prenájom zbrane: 10 €/kurz. Podmienkou je zakúpenie munície u nás.</span></div>
             <div class="obsah-sekcia"><span><i class="fas fa-hand-holding-heart"></i> Prenájom výstroja (puzdro, ochrana sluchu a zraku) je <strong>zdarma</strong>.</span></div>
-
-            <h4><i class="fas fa-credit-card"></i> INFO K REGISTRÁCII</h4>
-            <p style="font-size: 0.85rem; color: #aaa; line-height: 1.4;">
-                Pre <strong>záväzné zajednanie miesta</strong> je potrebné uhradiť kurzovné ihneď po odoslaní prihlášky. 
-                Pri neúčasti sa poplatok presúva ako kredit na váš náhradný termín.
-            </p>
         `;
 
-        // 2. NAPLNÍME PRAVÚ STRANU (MODERNÉ KARTY TERMÍNOV)
         infoPanel.innerHTML = `
             <div class="info-box-modern">
                 <i class="fas fa-location-dot"></i>
@@ -99,16 +106,43 @@ function otvoritDetail(typKurzu) {
             <div class="price-tag">120 € <span>vč. DPH</span></div>
         `;
 
+    } else if (typKurzu === 'sutaz_liga') {
+        // --- NOVÁ ČASŤ PRE SÚŤAŽ (NESKRÁTENÁ) ---
+        textPanel.innerHTML = `
+            <h2 id="modalTitle">Klubová liga Bellator</h2>
+            <img src="img/sutaz-klubova.jpg" class="modal-img-small" alt="Súťaž">
+            <h4><i class="fas fa-trophy"></i> O SÚŤAŽI:</h4>
+            <p>Pravidelná súťaž určená pre širokú streleckú verejnosť. Cieľom je preveriť strelecké zručnosti v dynamických parkúroch.</p>
+            <ul>
+                <li><strong>Divízie:</strong> Standard, Open, PCC.</li>
+                <li><strong>Počet parkúrov:</strong> 4 - 5 situácií.</li>
+                <li><strong>Min. počet rán:</strong> cca 100.</li>
+            </ul>
+        `;
+
+        infoPanel.innerHTML = `
+            <div class="info-box-modern">
+                <i class="fas fa-calendar-day"></i>
+                <span><strong>Termín súťaže:</strong><br>25. Február 2026</span>
+            </div>
+            <button class="btn-main-modern" onclick="potvrditRezervaciuSutaz('Klubová liga')">
+                <span>REGISTROVAŤ SA</span>
+                <i class="fas fa-user-plus"></i>
+            </button>
+            <div class="price-tag">Štartovné: 20 €</div>
+        `;
+
     } else {
+        // PRE OSTATNÉ KURZY, KTORÉ EŠTE NEMÁŠ HOTOVÉ
         textPanel.innerHTML = "<h2>Pripravujeme...</h2><p>Obsah pre tento kurz momentálne finalizujeme.</p>";
-        infoPanel.innerHTML = "";
+        infoPanel.innerHTML = '<button onclick="zatvoritDetail()" class="btn-main-modern">ZAVRIEŤ</button>';
     }
 
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
 }
 
-// Funkcia na prepínanie vizuálneho výberu termínu
+// --- 3. POMOCNÉ FUNKCIE PRE KURZY ---
 function vybratTermin(element, datum) {
     document.querySelectorAll('.termin-card').forEach(card => card.classList.remove('active'));
     element.classList.add('active');
@@ -134,10 +168,8 @@ function potvrditRezervaciu() {
         <h4 style="margin-bottom:20px;">Kontaktné údaje</h4>
         <label>Meno a priezvisko</label>
         <input type="text" id="reg-meno" placeholder="napr. Jozef Mrkva">
-        
         <label>E-mail</label>
         <input type="email" id="reg-email" placeholder="jozef@email.com">
-        
         <label>Telefónne číslo</label>
         <input type="tel" id="reg-tel" placeholder="+421 900 000 000">
         
@@ -164,7 +196,7 @@ function odoslatFinalnuRezervaciu(termin) {
         return;
     }
     
-    kapacity[termin] -= 1;
+    if(kapacity[termin]) kapacity[termin] -= 1;
     alert(`Ďakujeme, ${meno}! Vaša prihláška bola prijatá. Budete presmerovaný k platbe.`);
     zatvoritDetail();
 }
@@ -177,4 +209,10 @@ function zatvoritDetail() {
 window.onclick = function(event) {
     const modal = document.getElementById('courseModal');
     if (event.target == modal) zatvoritDetail();
+}
+
+// Funkcia pre registráciu na súťaž (aby to nehádzalo chybu)
+function potvrditRezervaciuSutaz(nazov) {
+    alert(`Registrácia na súťaž ${nazov} bola spustená. Vyplňte formulár, ktorý vám zašleme e-mailom.`);
+    zatvoritDetail();
 }

@@ -55,6 +55,20 @@ body {
     color: var(--army-olive);
 }
 
+/* Hamburger ikona pre mobil */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.nav-links {
+    display: flex;
+}
+
 .nav-links a {
     color: white;
     text-decoration: none;
@@ -222,13 +236,12 @@ body {
 
 /* --- 7. VYSKAKOVACIE OKNO (MODAL) --- */
 .modal {
-    display: none; /* Nechaj LEN TENTO riadok */
+    display: none; 
     position: fixed;
     z-index: 5000;
     left: 0; top: 0;
     width: 100%; height: 100%;
     background-color: rgba(0,0,0,0.95);
-    /* display: flex;  <-- TENTO RIADOK VYMAŽ ALEBO ZAKOMENTUJ */
     align-items: center; 
     justify-content: center;
 }
@@ -267,7 +280,6 @@ body {
     z-index: 1000;
 }
 
-/* Ľavá strana */
 .modal-text {
     flex: 1.5;
     padding: 50px; 
@@ -292,7 +304,6 @@ body {
     display: block;
 }
 
-/* Pravá strana - Info panel */
 .modal-info-panel {
     flex: 1;
     background: #111;
@@ -437,10 +448,51 @@ input[type="text"], input[type="email"], input[type="tel"] {
     box-sizing: border-box;
 }
 
-/* --- 8. RESPONSIVITA --- */
+/* --- 8. RESPONSIVITA (MOBILNÁ VERZIA) --- */
 @media (max-width: 1100px) {
-    .nav-links { display: none; } 
-    
+    /* Hamburger zobrazenie */
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none; /* Skryjeme odkazy na mobile v základe */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(18, 18, 18, 0.98);
+        border-bottom: 1px solid var(--army-olive);
+        padding: 20px 0;
+    }
+
+    /* Keď je menu aktívne cez JS */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        margin: 10px 0;
+        margin-left: 0;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-main, .btn-outline {
+        width: 100%;
+        max-width: 300px;
+    }
+
     .modal-grid {
         flex-direction: column;
         overflow-y: auto;
