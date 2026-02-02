@@ -51,11 +51,8 @@ body {
     letter-spacing: 2px;
 }
 
-.logo span {
-    color: var(--army-olive);
-}
+.logo span { color: var(--army-olive); }
 
-/* Hamburger ikona pre mobil */
 .menu-toggle {
     display: none;
     font-size: 1.5rem;
@@ -65,9 +62,7 @@ body {
     border: none;
 }
 
-.nav-links {
-    display: flex;
-}
+.nav-links { display: flex; }
 
 .nav-links a {
     color: white;
@@ -80,9 +75,7 @@ body {
     text-transform: uppercase;
 }
 
-.nav-links a:hover {
-    color: var(--army-olive);
-}
+.nav-links a:hover { color: var(--army-olive); }
 
 /* --- 4. HERO SEKCIA --- */
 .hero {
@@ -117,9 +110,7 @@ body {
     letter-spacing: 3px;
 }
 
-.hero h1 span {
-    color: var(--army-olive);
-}
+.hero h1 span { color: var(--army-olive); }
 
 .hero .subtitle {
     color: var(--text-secondary);
@@ -148,7 +139,6 @@ body {
     transition: 0.3s;
     border: none;
     cursor: pointer;
-    font-family: inherit;
 }
 
 .btn-main:hover, button:hover {
@@ -170,7 +160,6 @@ body {
     background: white;
     color: black !important;
 }
-
 /* --- 6. SEKCE A MRIEŽKA KURZOV --- */
 .section-title {
     text-align: center;
@@ -213,10 +202,7 @@ body {
     filter: sepia(20%) contrast(1.1) brightness(0.8);
 }
 
-.card-content {
-    padding: 25px;
-    flex-grow: 1;
-}
+.card-content { padding: 25px; flex-grow: 1; }
 
 .card-content h3 {
     margin-top: 0;
@@ -260,126 +246,62 @@ body {
     overflow: hidden;
 }
 
-.modal-grid {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
+.modal-grid { display: flex; flex-direction: row; height: 100%; width: 100%; }
 
 .close {
     position: absolute;
-    right: 25px;
-    top: 15px;
-    color: #fff;
-    font-size: 35px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 1000;
+    right: 25px; top: 15px;
+    color: #fff; font-size: 35px; font-weight: bold;
+    cursor: pointer; z-index: 1000;
 }
 
 .modal-text {
-    flex: 1.5;
-    padding: 50px; 
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--army-olive) transparent;
+    flex: 1.5; padding: 50px; overflow-y: auto;
+    scrollbar-width: thin; scrollbar-color: var(--army-olive) transparent;
 }
 
-.modal-text h2 {
-    margin-top: 0;
-    margin-bottom: 30px;
-    color: #fff;
-    font-size: 2.2rem;
-}
+.modal-text h2 { margin-top: 0; margin-bottom: 30px; color: #fff; font-size: 2.2rem; }
 
 .modal-img-small {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 30px;
-    display: block;
+    width: 100%; max-height: 400px; object-fit: cover;
+    border-radius: 4px; margin-bottom: 30px; display: block;
 }
 
 .modal-info-panel {
-    flex: 1;
-    background: #111;
-    padding: 50px;
-    border-left: 1px solid #333;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    height: 100%;
-    box-sizing: border-box;
+    flex: 1; background: #111; padding: 50px; border-left: 1px solid #333;
+    display: flex; flex-direction: column; overflow-y: auto; height: 100%; box-sizing: border-box;
 }
 
 .modal-text h4 {
-    color: var(--army-olive);
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    color: var(--army-olive); margin-bottom: 15px;
+    text-transform: uppercase; font-size: 1rem; display: flex; align-items: center; gap: 10px;
 }
 
 .obsah-sekcia {
-    background: rgba(255,255,255,0.03);
-    padding: 20px;
-    margin-bottom: 15px;
-    border-radius: 4px;
-    font-size: 0.95rem;
-    display: flex;
-    gap: 15px;
+    background: rgba(255,255,255,0.03); padding: 20px; margin-bottom: 15px;
+    border-radius: 4px; font-size: 0.95rem; display: flex; gap: 15px;
     border-left: 4px solid var(--army-olive);
 }
 
-.obsah-sekcia i {
-    color: var(--army-olive);
-    font-size: 1.1rem;
-    margin-top: 3px;
-}
+.obsah-sekcia i { color: var(--army-olive); font-size: 1.1rem; margin-top: 3px; }
 
 /* --- MODERNÝ VÝBER TERMÍNOV (KARTY) --- */
 .info-box-modern {
-    background: #1a1a1a;
-    padding: 15px;
-    border-radius: 6px;
-    border-left: 3px solid var(--army-olive);
-    margin-bottom: 25px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    background: #1a1a1a; padding: 15px; border-radius: 6px;
+    border-left: 3px solid var(--army-olive); margin-bottom: 25px;
+    display: flex; align-items: center; gap: 15px;
 }
-
-.info-box-modern i { color: var(--army-olive); font-size: 1.2rem; }
 
 .select-title {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-secondary);
-    margin-bottom: 15px;
+    font-size: 0.85rem; text-transform: uppercase;
+    letter-spacing: 1px; color: var(--text-secondary); margin-bottom: 15px;
 }
 
-.terminy-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 25px;
-}
+.terminy-container { display: flex; flex-direction: column; gap: 10px; margin-bottom: 25px; }
 
 .termin-card {
-    background: #1a1a1a;
-    border: 1px solid #333;
-    padding: 15px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.2s ease;
-    position: relative;
+    background: #1a1a1a; border: 1px solid #333; padding: 15px;
+    border-radius: 6px; cursor: pointer; transition: 0.2s ease; position: relative;
 }
 
 .termin-card:hover { border-color: #555; background: #222; }
@@ -390,12 +312,8 @@ body {
 }
 
 .termin-card.active::after {
-    content: '\f058';
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
-    position: absolute;
-    right: 15px; top: 50%;
-    transform: translateY(-50%);
+    content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+    position: absolute; right: 15px; top: 50%; transform: translateY(-50%);
     color: var(--army-olive);
 }
 
@@ -405,111 +323,41 @@ body {
 
 /* --- MODERNÉ TLAČIDLO V MODALE --- */
 .btn-main-modern {
-    width: 100%;
-    background: var(--army-olive);
-    color: #000 !important;
-    padding: 18px;
-    border: none;
-    border-radius: 4px;
-    font-weight: 900;
-    text-transform: uppercase;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: 0.3s;
-    letter-spacing: 1px;
+    width: 100%; background: var(--army-olive); color: #000 !important;
+    padding: 18px; border: none; border-radius: 4px; font-weight: 900;
+    text-transform: uppercase; display: flex; justify-content: space-between;
+    align-items: center; cursor: pointer; transition: 0.3s; letter-spacing: 1px;
 }
 
-.btn-main-modern:hover { filter: brightness(1.1); transform: translateY(-2px); }
-
 .price-tag {
-    margin-top: auto;
-    text-align: center;
-    font-size: 2.8rem;
-    font-weight: 900;
-    color: #fff;
-    padding-top: 20px;
-    border-top: 1px solid #333;
+    margin-top: auto; text-align: center; font-size: 2.8rem;
+    font-weight: 900; color: #fff; padding-top: 20px; border-top: 1px solid #333;
 }
 
 .price-tag span { font-size: 0.8rem; color: var(--text-secondary); font-weight: 400; }
 
 /* FORMULÁRE */
 input[type="text"], input[type="email"], input[type="tel"] {
-    width: 100%;
-    padding: 14px;
-    background: #2a2a2a;
-    color: white;
-    border: 1px solid #444;
-    margin-top: 8px;
-    margin-bottom: 15px;
-    border-radius: 4px;
-    box-sizing: border-box;
+    width: 100%; padding: 14px; background: #2a2a2a; color: white;
+    border: 1px solid #444; margin-top: 8px; margin-bottom: 15px;
+    border-radius: 4px; box-sizing: border-box;
 }
 
 /* --- 8. RESPONSIVITA (MOBILNÁ VERZIA) --- */
 @media (max-width: 1100px) {
-    /* Hamburger zobrazenie */
-    .menu-toggle {
-        display: block;
-    }
-
+    .menu-toggle { display: block; }
     .nav-links {
-        display: none; /* Skryjeme odkazy na mobile v základe */
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: rgba(18, 18, 18, 0.98);
-        border-bottom: 1px solid var(--army-olive);
-        padding: 20px 0;
+        display: none; flex-direction: column; position: absolute;
+        top: 100%; left: 0; width: 100%; background: rgba(18, 18, 18, 0.98);
+        border-bottom: 1px solid var(--army-olive); padding: 20px 0;
     }
-
-    /* Keď je menu aktívne cez JS */
-    .nav-links.active {
-        display: flex;
-    }
-
-    .nav-links a {
-        margin: 10px 0;
-        margin-left: 0;
-        text-align: center;
-        font-size: 1.1rem;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .btn-main, .btn-outline {
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .modal-grid {
-        flex-direction: column;
-        overflow-y: auto;
-    }
-    
-    .modal-content {
-        width: 100%; height: 100vh;
-        border-radius: 0;
-    }
-
-    .modal-text, .modal-info-panel {
-        padding: 30px 20px;
-        flex: none;
-    }
-
-    .modal-info-panel {
-        border-left: none;
-        border-top: 1px solid #333;
-    }
+    .nav-links.active { display: flex; }
+    .nav-links a { margin: 10px 0; text-align: center; font-size: 1.1rem; }
+    .hero h1 { font-size: 2.5rem; }
+    .hero-buttons { flex-direction: column; align-items: center; }
+    .btn-main, .btn-outline { width: 100%; max-width: 300px; }
+    .modal-grid { flex-direction: column; overflow-y: auto; }
+    .modal-content { width: 100%; height: 100vh; border-radius: 0; }
+    .modal-text, .modal-info-panel { padding: 30px 20px; flex: none; }
+    .modal-info-panel { border-left: none; border-top: 1px solid #333; }
 }
