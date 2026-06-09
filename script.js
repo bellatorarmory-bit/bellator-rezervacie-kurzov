@@ -2,6 +2,7 @@ const kapacity = {
     "11.04.2026": 10,
     "16.05.2026": 10,
     "13.04.2026": 10
+    
 };
 // 1. Inicializácia (Doplň svoje údaje zo Settings -> API)
 const SUPABASE_URL = 'https://ihcliqqmqkccymuabakw.supabase.co';
@@ -99,8 +100,11 @@ if (typKurzu === 'aktivny_utocnik') {
             <div class="price-tag">110 € <span>vč. DPH</span></div>
         `;
 
-    } else if (typKurzu === 'auto') { 
+    } else if (typKurzu === 'auto') {
     // --- STREĽBA Z AUTA ---
+        const datumKurzu = "27.06.2026";
+        const volneMesta = await aktualizujVolneMesta(datumKurzu);
+        const jePlno = volneMesta <= 0;
         textPanel.innerHTML = `
             <h2 id="modalTitle">Streľba z auta: Obrana proti útočníkovi vo vozidle</h2>
             <img src="img/HS-auto.jpg" class="modal-img-small" alt="Streľba z auta">
@@ -137,11 +141,22 @@ if (typKurzu === 'aktivny_utocnik') {
                     <span><strong>Miesto výcviku:</strong><br>Strelnica Bellator Trenčín</span>
                 </div>
 
-                <h4 class="select-title">Nadchádzajúce termíny:</h4>
-                <div style="background: rgba(138, 154, 91, 0.08); border: 1px dashed var(--army-olive); border-radius: 8px; padding: 18px; text-align: center; margin-bottom: 15px;">
-                    <i class="fas fa-calendar-plus" style="font-size: 1.6rem; color: var(--army-olive); margin-bottom: 10px; display: block;"></i>
-                    <p style="color: #fff; font-weight: bold; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 1px;">Pripravujeme nové termíny</p>
-                    <p style="color: #aaa; font-size: 0.85rem; margin: 0;">Sledujte nás alebo nás kontaktujte pre viac informácií.</p>
+                <h4 class="select-title">Dostupné termíny:</h4>
+                <div class="terminy-container">
+                    <div class="termin-item">
+                        <div class="termin-info">
+                            <i class="far fa-calendar-check"></i>
+                            <span style="display:block;">27. 06. 2026 (Sobota) o 10:00</span>
+                            <span style="font-size: 0.8rem; display:block; margin-top: 5px; color: ${volneMesta < 3 ? '#ff4d4d' : '#88b04b'};">
+                                Voľné miesta: <strong>${volneMesta} / 10</strong>
+                            </span>
+                        </div>
+                        <button class="btn-rezervovat"
+                                ${jePlno ? 'disabled style="background:#444; color:#888; border-color:#444; cursor:not-allowed;"' : ''}
+                                onclick="zobrazitRegistraciu('${datumKurzu}', 'auto')">
+                            ${jePlno ? 'OBSADENÉ' : 'Vybrať <i class="fas fa-chevron-right"></i>'}
+                        </button>
+                    </div>
                 </div>
 
                 <button onclick="zatvoritDetail()" style="background: transparent; color: #ffffff !important; border: 1px solid #ffffff; margin-top: 20px; width: 100%; cursor: pointer; padding: 12px; border-radius: 6px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px;">
@@ -152,7 +167,7 @@ if (typKurzu === 'aktivny_utocnik') {
                 <div style="margin-top: 20px; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; border: 1px solid #333;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                         <span style="color: #aaa; font-size: 0.85rem; text-transform: uppercase;">Člen klubu</span>
-                        <span style="color: #8a9a5b; font-weight: bold; font-size: 1.4rem;">130 €</span>
+                        <span style="color: #8a9a5b; font-weight: bold; font-size: 1.4rem;">120 €</span>
                     </div>
                     <div style="height: 1px; background: #333; margin: 10px 0;"></div>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -163,6 +178,7 @@ if (typKurzu === 'aktivny_utocnik') {
                 </div>
             </div>
         `;
+
         } else if (typKurzu === 'civil') {
         // --- CIVILNÁ PRIPRAVENOSŤ ---
         textPanel.innerHTML = `
@@ -582,7 +598,7 @@ function zobrazitRegistraciu(datum, typ) {
 </select>
 
 <div id="cena-v-reg" style="text-align: center; font-weight: bold; font-size: 1.2rem; margin-bottom: 15px; color: var(--army-olive);">
-    Cena k úhrade: 123 € 
+    Cena k úhrade: 150 € 
 </div>
         
        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 25px;">
@@ -622,7 +638,7 @@ function aktualizujCenuVRegistracii(typ) {
     } 
     else if (typ === 'auto') {
         cenaBezna = 150; // Doplň si reálnu cenu
-        cenaClen = 130;  // Doplň si reálnu cenu
+        cenaClen = 120;  // Doplň si reálnu cenu
     } 
     else if (typ === 'aktivny_utocnik') {
         cenaBezna = 110; // Doplň si reálnu cenu
