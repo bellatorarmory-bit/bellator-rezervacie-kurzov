@@ -102,7 +102,7 @@ if (typKurzu === 'aktivny_utocnik') {
 
     } else if (typKurzu === 'auto') {
     // --- STREĽBA Z AUTA ---
-        const datumKurzu = "27.06.2026";
+        const datumKurzu = "26.09.2026";
         const volneMesta = await aktualizujVolneMesta(datumKurzu);
         const jePlno = volneMesta <= 0;
         textPanel.innerHTML = `
@@ -146,7 +146,7 @@ if (typKurzu === 'aktivny_utocnik') {
                     <div class="termin-item">
                         <div class="termin-info">
                             <i class="far fa-calendar-check"></i>
-                            <span style="display:block;">27. 06. 2026 (Sobota) o 10:00</span>
+                            <span style="display:block;">26. 09. 2026 (Sobota) o 10:00</span>
                             <span style="font-size: 0.8rem; display:block; margin-top: 5px; color: ${volneMesta < 3 ? '#ff4d4d' : '#88b04b'};">
                                 Voľné miesta: <strong>${volneMesta} / 10</strong>
                             </span>
@@ -156,6 +156,22 @@ if (typKurzu === 'aktivny_utocnik') {
                                 onclick="zobrazitRegistraciu('${datumKurzu}', 'auto')">
                             ${jePlno ? 'OBSADENÉ' : 'Vybrať <i class="fas fa-chevron-right"></i>'}
                         </button>
+                    </div>
+                </div>
+
+                <h4 class="select-title" style="margin-top: 20px; color: #666; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">
+                    <i class="fas fa-history" style="margin-right: 6px;"></i> Prebehnuté termíny
+                </h4>
+                <div class="terminy-container">
+                    <div class="termin-item" style="opacity: 0.5;">
+                        <div class="termin-info">
+                            <i class="fas fa-calendar-check" style="color: #666;"></i>
+                            <span style="display:block; text-decoration: line-through; color: #888;">27. 06. 2026 (Sobota) o 10:00</span>
+                            <span style="font-size: 0.8rem; display:block; margin-top: 5px; color: #666;">
+                                Kurz sa konal
+                            </span>
+                        </div>
+                        <span style="background: #333; color: #666; padding: 6px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; white-space: nowrap;">PREBEHOL</span>
                     </div>
                 </div>
 
